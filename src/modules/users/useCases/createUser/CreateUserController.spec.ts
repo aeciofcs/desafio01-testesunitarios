@@ -7,7 +7,7 @@ let connection: Connection;
 
 describe("Create User Controller", () => {
   beforeAll( async () => {
-    connection = await createConnection();
+    connection = await createConnection;
     await connection.runMigrations();
 
   })
@@ -27,6 +27,7 @@ describe("Create User Controller", () => {
     expect(response.status).toBe(201);
     expect(response.body).toEqual({});
   });
+
 
   it("Should be no able to create a new user with name existing", async () => {
     const response = await request(app).post("/api/v1/users").send({
